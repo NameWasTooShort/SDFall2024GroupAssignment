@@ -165,7 +165,7 @@ public class BlackjackGame extends Game {
 
             handlePlayerTurn(scanner);
 
-            if (player.calculateHandValue() <= 21) {
+            if (player.calculateHandValue() <= 20) {
                 handleDealerTurn();
             }
 

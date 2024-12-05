@@ -81,7 +81,7 @@ public class BlackjackPlayer extends Player {
     public void placeBet(int amount) {
         if (amount <= balance) {
             bet = amount;
-            balance -= amount;
+
         } else {
             throw new IllegalArgumentException("Insufficient balance.");
         }
@@ -90,11 +90,11 @@ public class BlackjackPlayer extends Player {
     public void adjustBalance(int outcome) {
         System.out.println("adjust was called");
         if (outcome == 0) {
-            balance += bet * 2;
-        } else if (outcome == 1) {
-            //do nothing
-        }else if (outcome == 2){
             balance += bet;
+        } else if (outcome == 1) {
+            balance -= bet;
+        }else if (outcome == 2){
+            //do nothing
         }
 
         bet = 0;
