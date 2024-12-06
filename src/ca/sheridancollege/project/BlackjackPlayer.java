@@ -88,7 +88,6 @@ public class BlackjackPlayer extends Player {
     }
 
     public void adjustBalance(int outcome) {
-        System.out.println("adjust was called");
         if (outcome == 0) {
             balance += bet;
         } else if (outcome == 1) {
@@ -99,8 +98,6 @@ public class BlackjackPlayer extends Player {
 
         bet = 0;
     }
-
-
 
     public int getBet() {
         return bet;

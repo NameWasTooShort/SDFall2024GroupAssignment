@@ -9,6 +9,7 @@ import java.util.Scanner;
 /**
  *
  * @author basso
+ * @author Steven
  */
 public class BlackjackGame extends Game {
 
@@ -169,22 +170,44 @@ public class BlackjackGame extends Game {
                 handleDealerTurn();
             }
 
-            processResults();
+            declareWinner();
 
             System.out.println("\nYour balance is now $" + player.getBalance());
-            System.out.print("Would you like to play again? (yes/no): ");
-            String playAgain = scanner.nextLine().toLowerCase();
-
-            if (!playAgain.equals("yes")) {
-                System.out.println("Thanks for playing! Goodbye.");
+            
+            // If they are out of money, they lose. Game automatically ends.
+            if(player.getBalance() <= 0){
+                System.out.println("Out of money, you lose.");
                 break;
             }
-        }
 
+            // Checks for yes/no response if we want to continue playing the game      
+            String playAgain = "";
+            // Checks if the response is yes or no.
+            while (!playAgain.equals("yes") && !playAgain.equals("no")) {
+                System.out.print("Would you like to play again? (yes/no): ");
+                playAgain = scanner.nextLine().toLowerCase();
+            }
+            System.out.println(checkPlayAgain(playAgain));
+            // If false, does not want to play again. So we exit the game loop.
+            if(!checkPlayAgain(playAgain)){
+                break;
+            }
+            // Otherwise, let the loop rerun.
+
+        }
         scanner.close();
+        // If we no longer want to play, we still determine winner.
+        declareWinner();
+    }
+    
+    // Helper function: helps to check if the player wants to play again.
+    // Incoming text is already all lowercase
+    private boolean checkPlayAgain(String playOption){
+        return playOption.equals("yes");
     }
 
     @Override
     public void declareWinner() {
+        processResults();
     }
 }
