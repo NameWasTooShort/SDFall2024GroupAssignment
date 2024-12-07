@@ -86,7 +86,10 @@ public class BlackjackPlayer extends Player {
             throw new IllegalArgumentException("Insufficient balance.");
         }
     }
-
+    // 3 outcomes
+    // 0 is if Player wins
+    // 1 is if Player loses
+    // 2 is if tied.
     public void adjustBalance(int outcome) {
         if (outcome == 0) {
             balance += bet;
@@ -95,14 +98,14 @@ public class BlackjackPlayer extends Player {
         }else if (outcome == 2){
             //do nothing
         }
-
         bet = 0;
     }
 
     public int getBet() {
         return bet;
     }
-
+    
+    // We don't use this due to MVC pattern
     @Override
     public void play() {
     }
