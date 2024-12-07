@@ -115,7 +115,7 @@ public class BlackjackGame extends Game {
         return "";
     }
 
-    // We dont end up using these in a MVC pattern
+    // We ended up not using these in a MVC pattern
     // Showing winner is done in View
     @Override
     public void declareWinner() {
